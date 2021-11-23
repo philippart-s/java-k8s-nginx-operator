@@ -1,2 +1,2 @@
-# java-k8s-nginx-operator
-Simple K8s operator for Nginx written in Java
+# java-k8s-simple-operator
+Simple example of an operator for Kubernetes written in Java
