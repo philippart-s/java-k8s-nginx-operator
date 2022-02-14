@@ -2,7 +2,7 @@ package fr.wilda;
 
 import java.io.IOException;
 
-import fr.wilda.controller.NginxInstallerController;
+import fr.wilda.controller.NginxInstallerReconciler;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -16,11 +16,10 @@ public class NginxInstallerRunner {
     KubernetesClient client = new DefaultKubernetesClient(config);
 
     Operator operator = new Operator(client, DefaultConfigurationService.instance());
-    operator.register(new NginxInstallerController(client));
+    operator.register(new NginxInstallerReconciler(client));
+
+    System.out.println("🚀 Starting NginxInstaller operator !!! 🚀");
 
     operator.start();
-    
-    System.out.println("🚀 Starting NginxInstaller operator !!! 🚀");
-    //new FtBasic(new TkFork(new FkRegex("/health", "ALL GOOD.")), 8080).start(Exit.NEVER);
   }
 }
